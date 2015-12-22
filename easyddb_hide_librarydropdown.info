@@ -1,0 +1,11 @@
+name = EasyDDB Hide Library dropdown
+description = Provide administration functionality on Ding Library forms.
+core = 7.x
+package = easyDDB
+dependencies[] = ding_library
+dependencies[] = features
+configure = admin/config/ding/admin-library
+features[features_api][] = api:2
+features[user_permission][] = administer ding library forms
+files[] = easyddb_hide_librarydropdown.admin.inc
+mtime = 1450791292

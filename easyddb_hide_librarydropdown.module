@@ -1,0 +1,44 @@
+<?php
+/**
+ * @file
+ * Define main hooks for the module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function easyddb_hide_librarydropdown_menu() {
+  $items = array();
+
+  $items['admin/config/ding/admin-library'] = array(
+    'title' => 'EasyDDB Hide Library dropdown',
+    'description' => 'Configure ding library module works.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('easyddb_hide_librarydropdown_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'easyddb_hide_librarydropdown.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function easyddb_hide_librarydropdown_permission() {
+  return array(
+    'administer ding library forms' => array(
+      'title' => t('Administer Ding Library forms'),
+      'description' => t('Perform administration tasks on ding library forms.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function easyddb_hide_librarydropdown_form_ding_library_library_list_select_library_alter(&$form, &$form_state, $form_id) {
+  $load_form = variable_get('easyddb_hide_librarydropdown_list', '0');
+  if ($load_form) {
+    $form['#access'] = FALSE;
+  }
+}
