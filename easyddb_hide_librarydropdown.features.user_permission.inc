@@ -5,7 +5,7 @@
  */
 
 /**
-   * Implements hook_user_default_permissions().
+ * Implements hook_user_default_permissions().
  */
 function easyddb_hide_librarydropdown_user_default_permissions() {
   $permissions = array();
