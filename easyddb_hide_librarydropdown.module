@@ -12,25 +12,13 @@ function easyddb_hide_librarydropdown_menu() {
 
   $items['admin/config/ding/admin-library'] = array(
     'title' => 'EasyDDB Hide Library dropdown',
-    'description' => 'Configure ding library module works.',
+    'description' => 'Admin page for library dropdown form display.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('easyddb_hide_librarydropdown_settings_form'),
     'access arguments' => array('administer site configuration'),
     'file' => 'easyddb_hide_librarydropdown.admin.inc',
   );
   return $items;
-}
-
-/**
- * Implements hook_permission().
- */
-function easyddb_hide_librarydropdown_permission() {
-  return array(
-    'administer ding library forms' => array(
-      'title' => t('Administer Ding Library forms'),
-      'description' => t('Perform administration tasks on ding library forms.'),
-    ),
-  );
 }
 
 /**
