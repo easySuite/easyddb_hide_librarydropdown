@@ -22,11 +22,12 @@ function easyddb_hide_librarydropdown_menu() {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements hook_panels_pane_content_alter().
  */
-function easyddb_hide_librarydropdown_form_ding_library_library_list_select_library_alter(&$form, &$form_state, $form_id) {
+function easyddb_hide_librarydropdown_panels_pane_content_alter($content, $pane, $args, $contexts) {
   $load_form = variable_get('easyddb_hide_librarydropdown_list', '0');
-  if ($load_form) {
-    $form['#access'] = FALSE;
+  if ($pane->type == 'library_list' && $load_form) {
+    $content->content = NULL;
   }
+  return $content;
 }
