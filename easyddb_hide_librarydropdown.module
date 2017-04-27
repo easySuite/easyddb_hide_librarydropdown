@@ -12,7 +12,7 @@ function easyddb_hide_librarydropdown_menu() {
 
   $items['admin/config/ding/admin-library'] = array(
     'title' => 'EasyDDB Hide Library dropdown',
-    'description' => 'Configure ding library module works.',
+    'description' => 'Admin page for library dropdown form display.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('easyddb_hide_librarydropdown_settings_form'),
     'access arguments' => array('administer site configuration'),
@@ -22,23 +22,12 @@ function easyddb_hide_librarydropdown_menu() {
 }
 
 /**
- * Implements hook_permission().
+ * Implements hook_panels_pane_content_alter().
  */
-function easyddb_hide_librarydropdown_permission() {
-  return array(
-    'administer ding library forms' => array(
-      'title' => t('Administer Ding Library forms'),
-      'description' => t('Perform administration tasks on ding library forms.'),
-    ),
-  );
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- */
-function easyddb_hide_librarydropdown_form_ding_library_library_list_select_library_alter(&$form, &$form_state, $form_id) {
+function easyddb_hide_librarydropdown_panels_pane_content_alter($content, $pane, $args, $contexts) {
   $load_form = variable_get('easyddb_hide_librarydropdown_list', '0');
-  if ($load_form) {
-    $form['#access'] = FALSE;
+  if ($pane->type == 'library_list' && $load_form) {
+    $content->content = NULL;
   }
+  return $content;
 }
