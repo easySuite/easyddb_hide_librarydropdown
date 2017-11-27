@@ -1,4 +1,4 @@
-name = easyDDB Hide Library dropdown
+name = easyOPAC Hide Library dropdown
 description = Administration of the library dropdown form display.
 core = 7.x
 package = easyOPAC
