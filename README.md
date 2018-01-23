@@ -1,4 +1,4 @@
-easyDDB Hide Library dropdown
+easyOPAC Hide Library dropdown
 ==========
 
 Module gives possibility to disable/enable library dropdown on pages like news/events.
